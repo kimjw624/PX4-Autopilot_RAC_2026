@@ -1,20 +1,20 @@
 /****************************************************************************
- * Copyright (c) 2025 PX4 Development Team.
+ * Copyright (c) 2026 PX4 Development Team.
  * SPDX-License-Identifier: BSD-3-Clause
  ****************************************************************************/
 #pragma once
 
-// Translate RegisterExtComponentRequest v0 <--> v1
-#include <px4_msgs_old/msg/register_ext_component_request_v0.hpp>
+// Translate RegisterExtComponentRequest v1 <--> v2
 #include <px4_msgs_old/msg/register_ext_component_request_v1.hpp>
+#include <px4_msgs/msg/register_ext_component_request.hpp>
 
-class RegisterExtComponentRequestV1Translation {
+class RegisterExtComponentRequestV2Translation {
 public:
-    using MessageOlder = px4_msgs_old::msg::RegisterExtComponentRequestV0;
-    static_assert(MessageOlder::MESSAGE_VERSION == 0);
+    using MessageOlder = px4_msgs_old::msg::RegisterExtComponentRequestV1;
+    static_assert(MessageOlder::MESSAGE_VERSION == 1);
 
-    using MessageNewer = px4_msgs_old::msg::RegisterExtComponentRequestV1;
-    static_assert(MessageNewer::MESSAGE_VERSION == 1);
+    using MessageNewer = px4_msgs::msg::RegisterExtComponentRequest;
+    static_assert(MessageNewer::MESSAGE_VERSION == 2);
 
     static constexpr const char* kTopic = "fmu/in/register_ext_component_request";
 
@@ -29,7 +29,8 @@ public:
 	    msg_newer.enable_replace_internal_mode = msg_older.enable_replace_internal_mode;
 	    msg_newer.replace_internal_mode = msg_older.replace_internal_mode;
 	    msg_newer.activate_mode_immediately = msg_older.activate_mode_immediately;
-	    msg_newer.not_user_selectable = false;
+	    msg_newer.not_user_selectable = msg_older.not_user_selectable;
+	    msg_newer.request_offboard_setpoints = false;
     }
 
     static void toOlder(const MessageNewer &msg_newer, MessageOlder &msg_older) {
@@ -43,7 +44,8 @@ public:
 	    msg_older.enable_replace_internal_mode = msg_newer.enable_replace_internal_mode;
 	    msg_older.replace_internal_mode = msg_newer.replace_internal_mode;
 	    msg_older.activate_mode_immediately = msg_newer.activate_mode_immediately;
+	    msg_older.not_user_selectable = msg_newer.not_user_selectable;
     }
 };
 
-REGISTER_TOPIC_TRANSLATION_DIRECT(RegisterExtComponentRequestV1Translation);
+REGISTER_TOPIC_TRANSLATION_DIRECT(RegisterExtComponentRequestV2Translation);

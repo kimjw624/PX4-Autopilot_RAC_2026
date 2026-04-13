@@ -4,22 +4,21 @@
  ****************************************************************************/
 #pragma once
 
-// Translate VehicleStatus v2 <--> v3
-#include <px4_msgs_old/msg/vehicle_status_v2.hpp>
+// Translate VehicleStatus v3 <--> v4
 #include <px4_msgs_old/msg/vehicle_status_v3.hpp>
+#include <px4_msgs/msg/vehicle_status.hpp>
 
-class VehicleStatusV3Translation {
+class VehicleStatusV4Translation {
 public:
-	using MessageOlder = px4_msgs_old::msg::VehicleStatusV2;
-	static_assert(MessageOlder::MESSAGE_VERSION == 2);
+	using MessageOlder = px4_msgs_old::msg::VehicleStatusV3;
+	static_assert(MessageOlder::MESSAGE_VERSION == 3);
 
-	using MessageNewer = px4_msgs_old::msg::VehicleStatusV3;
-	static_assert(MessageNewer::MESSAGE_VERSION == 3);
+	using MessageNewer = px4_msgs::msg::VehicleStatus;
+	static_assert(MessageNewer::MESSAGE_VERSION == 4);
 
 	static constexpr const char* kTopic = "fmu/out/vehicle_status";
 
 	static void fromOlder(const MessageOlder &msg_older, MessageNewer &msg_newer) {
-		// Set msg_newer from msg_older
 		msg_newer.timestamp = msg_older.timestamp;
 		msg_newer.armed_time = msg_older.armed_time;
 		msg_newer.takeoff_time = msg_older.takeoff_time;
@@ -31,9 +30,9 @@ public:
 		msg_newer.nav_state = msg_older.nav_state;
 		msg_newer.executor_in_charge = msg_older.executor_in_charge;
 		msg_newer.nav_state_display = msg_older.nav_state_display;
+		msg_newer.accepts_offboard_setpoints = false;
 		msg_newer.valid_nav_states_mask = msg_older.valid_nav_states_mask;
 		msg_newer.can_set_nav_states_mask = msg_older.can_set_nav_states_mask;
-		// failure_detector_status removed (use separate FailureDetectorStatus topic)
 		msg_newer.hil_state = msg_older.hil_state;
 		msg_newer.vehicle_type = msg_older.vehicle_type;
 		msg_newer.failsafe = msg_older.failsafe;
@@ -64,7 +63,6 @@ public:
 	}
 
 	static void toOlder(const MessageNewer &msg_newer, MessageOlder &msg_older) {
-		// Set msg_older from msg_newer
 		msg_older.timestamp = msg_newer.timestamp;
 		msg_older.armed_time = msg_newer.armed_time;
 		msg_older.takeoff_time = msg_newer.takeoff_time;
@@ -78,7 +76,6 @@ public:
 		msg_older.nav_state_display = msg_newer.nav_state_display;
 		msg_older.valid_nav_states_mask = msg_newer.valid_nav_states_mask;
 		msg_older.can_set_nav_states_mask = msg_newer.can_set_nav_states_mask;
-		msg_older.failure_detector_status = 0; // Removed in v3, use separate FailureDetectorStatus topic
 		msg_older.hil_state = msg_newer.hil_state;
 		msg_older.vehicle_type = msg_newer.vehicle_type;
 		msg_older.failsafe = msg_newer.failsafe;
@@ -109,4 +106,4 @@ public:
 	}
 };
 
-REGISTER_TOPIC_TRANSLATION_DIRECT(VehicleStatusV3Translation);
+REGISTER_TOPIC_TRANSLATION_DIRECT(VehicleStatusV4Translation);
