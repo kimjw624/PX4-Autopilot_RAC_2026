@@ -39004,19 +39004,6 @@ The usb port on the sensor indicates 180deg, opposite usb is forward facing
 | ------- | -------- | -------- | --------- | ------- | ---- |
 | &check; |          |          |           | 0       |      |
 
-### SIM_ARSPD_FAIL (`INT32`) {#SIM_ARSPD_FAIL}
-
-Dynamically simulate failure of airspeed sensor instance.
-
-**Values:**
-
-- `0`: Disabled
-- `1`: Enabled
-
-| Reboot  | minValue | maxValue | increment | default | unit |
-| ------- | -------- | -------- | --------- | ------- | ---- |
-| &check; | 0        | 1        |           | 0       |      |
-
 ### VN_MODE (`INT32`) {#VN_MODE}
 
 VectorNav driver mode.
