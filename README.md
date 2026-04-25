@@ -2,7 +2,7 @@
 
 1. Go to the directory shown below:
 ```
-cd \RAC_2026\docker
+cd RAC_2026\docker\
 ```
 
 2. Clone the repository:
@@ -12,12 +12,12 @@ git clone --recursive
 
 3. Copy the model folders (ground, red_marker, apriltag, box) that are inside the MODELS folder into the directory below
 ```
-cd /PX4_Autopilot/Tools/simulation/gz/models
+cd PX4_Autopilot\Tools\simulation\gz\models\
 ```
 
 4. Copy the world file (RAC_2026.sdf) that are inside the MODELS folder into the directory below
 ```
-cd /PX4_Autopilot/Tools/simulation/gz/worlds
+cd \PX4_Autopilot\Tools\simulation\gz\worlds\
 ```
 
 
