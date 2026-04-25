@@ -1,3 +1,29 @@
+# Procedure
+
+1. Go to the directory shown below:
+```
+cd \RAC_2026\docker
+```
+
+2. Clone the repository:
+```
+git clone --recursive
+```
+
+3. Copy the model folders (ground, red_marker, apriltag, box) into the directory below
+```
+cd /PX4_Autopilot/Tools/simulation/gz/models
+```
+
+4. Copy the world file (RAC_2026.sdf) into the directory below
+```
+cd /PX4_Autopilot/Tools/simulation/gz/worlds
+```
+
+
+
+
+
 <p align="center">
   <a href="https://px4.io">
     <img src="docs/assets/site/px4_logo.svg" alt="PX4 Autopilot" width="240">
