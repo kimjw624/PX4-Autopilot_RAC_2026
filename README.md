@@ -10,12 +10,12 @@ cd \RAC_2026\docker
 git clone --recursive
 ```
 
-3. Copy the model folders (ground, red_marker, apriltag, box) into the directory below
+3. Copy the model folders (ground, red_marker, apriltag, box) that are inside the MODELS folder into the directory below
 ```
 cd /PX4_Autopilot/Tools/simulation/gz/models
 ```
 
-4. Copy the world file (RAC_2026.sdf) into the directory below
+4. Copy the world file (RAC_2026.sdf) that are inside the MODELS folder into the directory below
 ```
 cd /PX4_Autopilot/Tools/simulation/gz/worlds
 ```
